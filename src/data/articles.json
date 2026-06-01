@@ -1,0 +1,30 @@
+[
+  {
+    "id": "art-001",
+    "title": "Cuidado con las estafas y robo de información",
+    "summary": "Conoce los métodos psicológicos más comunes que usan los atacantes en llamadas telefónicas y cómo identificar un enlace falso de inmediato.",
+    "mediaUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600",
+    "mediaType": "image",
+    "linkUrl": "/articulos/prevencion-estafas",
+    "buttonText": "VER"
+  },
+  {
+    "id": "art-002",
+    "title": "Uso seguro de tecnologías y redes sociales",
+    "summary": "Video tutorial paso a paso enfocado en la configuración de privacidad para resguardar las fotos e información de tu entorno familiar.",
+    "mediaUrl": "video.mp4",
+    "posterUrl": "portada.png",
+    "mediaType": "video",
+    "linkUrl": "/articulos/guia-tecnologia-segura",
+    "buttonText": "VER"
+  },
+  {
+    "id": "art-003",
+    "title": "Acompañamiento familiar en la era digital",
+    "summary": "Herramientas conceptuales y prácticas para guiar a los adultos mayores en el uso diario de aplicaciones bancarias y de mensajería.",
+    "mediaUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600",
+    "mediaType": "image",
+    "linkUrl": "/articulos/acompanamiento-familiar",
+    "buttonText": "VER"
+  }
+]
