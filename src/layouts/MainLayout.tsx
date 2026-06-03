@@ -1,30 +1,20 @@
-// src/layouts/MainLayout.tsx
-import { type ReactNode } from 'react';
 
+import { type ReactNode } from 'react';
+import { Header } from '../components/Header';
+//Implementacion de IA: se define una interfaz para las props del MainLayout, indicando que el componente puede envolver a otros componentes o páginas a través de la prop 'children'. Esto permite que el MainLayout sea reutilizable y flexible para diferentes partes de la aplicación.
+// src/layouts/MainLayout.tsx
 interface MainLayoutProps {
-  children: ReactNode; // Define que este componente puede envolver a otros componentes o páginas
+  children: ReactNode;
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
-      
-      {/* ─── HEADER ─── */}
-      <header className="bg-white shadow-xs py-4 px-6 flex justify-between items-center border-b border-gray-100">
-        <div className="text-2xl font-bold text-cysam-blue tracking-wider">CYSAM</div>
-        <div className="text-sm text-gray-500">Panel de Control</div>
-      </header>
-
-      {/* ─── CONTENIDO DINÁMICO CON REACTNODE ─── */}
+    <div className="w-full min-h-screen flex flex-col">
+      {/* El Header vive aquí globalmente para toda la app */}
+      <Header /> 
       <main className="flex-1">
         {children}
       </main>
-
-      {/* ─── FOOTER ─── */}
-      <footer className="bg-cysam-blue text-white py-8 px-6 text-center text-sm font-light mt-auto">
-        <p>© 2026 CYSAM - Proyecto de Desarrollo de Aplicaciones Interactivas.</p>
-      </footer>
-
     </div>
   );
 };
