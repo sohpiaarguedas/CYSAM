@@ -2,5 +2,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cysam-blue: #02387E;
+  --color-cysam-blue: #0A3A82;
+  --color-cysam-blue-dark: #062454;
 }
