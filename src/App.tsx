@@ -1,16 +1,13 @@
-import './App.css'
-import { Principal } from './pages/principal'
-import { MainLayout } from './layouts/MainLayout'
+import ArticleDetail from "./pages/articleDetail";
 
 function App() {
-
   return (
-    <>
-    <MainLayout>
-      <Principal />
-    </MainLayout>
-    </>
-  )
+    <ArticleDetail
+      title="Que hacer si hicieron transacciones sin mi autorización desde mi tarjeta"
+      description="Si detectaste movimientos o compras que no reconoces en tu tarjeta"
+      video=""
+    />
+  );
 }
 
-export default App
+export default App;
