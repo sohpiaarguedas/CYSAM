@@ -1,11 +1,18 @@
+import { useState } from "react";
 import ArticleDetail from "./pages/articleDetail";
+import { articleService } from "./services/articleService";
 
 function App() {
+  const articles = articleService.getAllArticles();
+
+  const [selectedArticle, setSelectedArticle] = useState(
+    articles[0]
+  );
+
   return (
     <ArticleDetail
-      title="Que hacer si hicieron transacciones sin mi autorización desde mi tarjeta"
-      description="Si detectaste movimientos o compras que no reconoces en tu tarjeta"
-      video=""
+      article={selectedArticle}
+      onSelectArticle={setSelectedArticle}
     />
   );
 }

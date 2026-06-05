@@ -1,42 +1,46 @@
-import ArticlesEspecific from "../components/Video";
-import ArticleContent from "../components/articleContainer";
+import ArticleMedia from "../components/ArticleMedia";
+import ArticleList from "../components/ArticlesList";
+import { Header } from "../components/Header";
+import type { ArticleCardType } from "../types/articleCardType";
 
 interface ArticleDetailProps {
-  title: string;
-  description: string;
-  video: string;
+  article: ArticleCardType;
+  onSelectArticle: (article: ArticleCardType) => void;
 }
 
-function ArticleDetail({ title, description, video }: ArticleDetailProps) {
+function ArticleDetail({article, onSelectArticle }: ArticleDetailProps) {
+
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
-
+      <Header />
 
       <div className="text-center mb-8">
-        <h1 className="text-2xl md:text-3xl font-medium ">
-          {title}
+        <h1 className="text-2xl  font-medium">
+          {article.title}
         </h1>
       </div>
 
-
       <div className="mb-10">
-        <ArticlesEspecific video={video} />
-      </div>
 
+
+        <ArticleMedia
+          mediaUrl={article.mediaUrl}
+          mediaType={article.mediaType}
+        />
+      </div>
 
       <div className="bg-yellow-100 p-8 text-center mb-12">
         <h2 className="text-xl font-medium mb-4">
-          {title}
+          {article.title}
         </h2>
 
-        <p className="  max-w-4xl mx-auto">
-          {description}
+        <p className="max-w-4xl mx-auto">
+          {article.summary}
         </p>
       </div>
 
-
-      <ArticleContent />
-
+      <ArticleList onSelectArticle={onSelectArticle} />
     </div>
   );
 }

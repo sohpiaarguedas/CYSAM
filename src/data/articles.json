@@ -12,8 +12,8 @@
     "id": "art-002",
     "title": "Uso seguro de tecnologías y redes sociales",
     "summary": "Video tutorial paso a paso enfocado en la configuración de privacidad para resguardar las fotos e información de tu entorno familiar.",
-    "mediaUrl": "video.mp4",
-    "posterUrl": "portada.png",
+    "mediaUrl": "/video.mp4",
+    "posterUrl": "/portada.png",
     "mediaType": "video",
     "linkUrl": "/articulos/guia-tecnologia-segura",
     "buttonText": "VER"
