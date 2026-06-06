@@ -1,4 +1,4 @@
-export interface ArticleCardType {
+export interface ArticleType {
     id: string | number;
     title: string;
     summary: string;
@@ -7,4 +7,5 @@ export interface ArticleCardType {
     linkUrl: string;
     posterUrl?: string; // Nueva propiedad opcional para la URL del poster de video Implementada por IA
     buttonText?: string;
+    content: string; // Nueva propiedad para el contenido completo del artículo
 }

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ArticleCard } from '../components/articleCard';
-import {type ArticleCardType } from '../types/articleCardType';
+import {type ArticleType } from '../types/articleType';
 import { articleService } from '../services/articleService';
 
 export const Principal = () => {
-    const [articles, setArticles] = useState<ArticleCardType[]>([]);
+    const [articles, setArticles] = useState<ArticleType[]>([]);
     useEffect(() => {
         const data = articleService.getAllArticles();
         setArticles(data);

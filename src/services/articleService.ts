@@ -1,12 +1,12 @@
-import { type ArticleCardType } from '../types/articleCardType';
+import { type ArticleType } from '../types/articleType';
 import articleData from '../data/articles.json';
 
 
 export const articleService = {
-    getAllArticles(): ArticleCardType[] {
-        return articleData as ArticleCardType[];
+    getAllArticles(): ArticleType[] {
+        return articleData as ArticleType[];
     },
-    getArticleById(id: string | number): ArticleCardType | undefined {
+    getArticleById(id: string | number): ArticleType | undefined {
         const articles = this.getAllArticles();
         return articles.find(article => article.id === id);
     }

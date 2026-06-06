@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { ArticleCard } from "./articleCard";
 import { articleService } from "../services/articleService";
-import type { ArticleCardType } from "../types/articleCardType";
+import type { ArticleType } from "../types/articleType";
 
 interface ListProps {
-  onSelectArticle: (article: ArticleCardType) => void;
+  onSelectArticle: (article: ArticleType) => void;
 }
 
 function ArticleList({ onSelectArticle }: ListProps) {
-  const [articles, setArticles] = useState<ArticleCardType[]>([]);
+  const [articles, setArticles] = useState<ArticleType[]>([]);
 
   useEffect(() => {
     setArticles(articleService.getAllArticles());

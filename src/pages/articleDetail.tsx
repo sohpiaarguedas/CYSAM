@@ -1,11 +1,11 @@
 import ArticleMedia from "../components/ArticleMedia";
 import ArticleList from "../components/ArticlesList";
-import { Header } from "../components/Header";
-import type { ArticleCardType } from "../types/articleCardType";
+
+import type { ArticleType } from "../types/articleType";
 
 interface ArticleDetailProps {
-  article: ArticleCardType;
-  onSelectArticle: (article: ArticleCardType) => void;
+  article: ArticleType;
+  onSelectArticle: (article: ArticleType) => void;
 }
 
 function ArticleDetail({article, onSelectArticle }: ArticleDetailProps) {
@@ -13,7 +13,7 @@ function ArticleDetail({article, onSelectArticle }: ArticleDetailProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
-      <Header />
+
 
       <div className="text-center mb-8">
         <h1 className="text-2xl  font-medium">

@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react';
-import type { ArticleCardType } from '../types/articleCardType';
+import type { ArticleType } from '../types/articleType';
 
 interface ArticleCardProps {
-  article: ArticleCardType;
-  onClick: () => void;
+  article: ArticleType;
+  onClick?: () => void;
 }
 
 export const ArticleCard = ({ article,  onClick }: ArticleCardProps) => {
@@ -39,13 +39,15 @@ export const ArticleCard = ({ article,  onClick }: ArticleCardProps) => {
     }
   };
 
+  
+
   return (
     <div 
-      className="flex flex-col w-full max-w-[360px] bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+      className="flex flex-col w-full max-w-90 bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden">
+      <div className="relative w-full aspect-16/10 bg-gray-100 overflow-hidden">
         
         {mediaType === 'video' && (
           <video
