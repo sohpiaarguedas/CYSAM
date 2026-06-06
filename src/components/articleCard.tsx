@@ -3,9 +3,10 @@ import type { ArticleCardType } from '../types/articleCardType';
 
 interface ArticleCardProps {
   article: ArticleCardType;
+  onClick: () => void;
 }
 
-export const ArticleCard = ({ article }: ArticleCardProps) => {
+export const ArticleCard = ({ article,  onClick }: ArticleCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -71,12 +72,14 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
         </div>
       </div>
 
-      <a 
-        href={linkUrl} 
-        className="block w-full bg-cysam-blue hover:bg-cysam-blue-dark text-white text-center py-3.5 text-base font-semibold tracking-wider transition-colors duration-200"
-      >
-        {buttonText}
-      </a>
+     
+     <button
+  onClick={onClick}
+  className="block w-full bg-cysam-blue hover:bg-cysam-blue-dark text-white text-center py-3.5 text-base font-semibold tracking-wider transition-colors duration-200"
+>
+  {buttonText}
+</button>
+
     </div>
   );
 };

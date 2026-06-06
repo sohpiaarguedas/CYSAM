@@ -1,16 +1,20 @@
-import './App.css'
-import { Principal } from './pages/principal'
-import { MainLayout } from './layouts/MainLayout'
+import { useState } from "react";
+import ArticleDetail from "./pages/articleDetail";
+import { articleService } from "./services/articleService";
 
 function App() {
+  const articles = articleService.getAllArticles();
+
+  const [selectedArticle, setSelectedArticle] = useState(
+    articles[0]
+  );
 
   return (
-    <>
-    <MainLayout>
-      <Principal />
-    </MainLayout>
-    </>
-  )
+    <ArticleDetail
+      article={selectedArticle}
+      onSelectArticle={setSelectedArticle}
+    />
+  );
 }
 
-export default App
+export default App;
