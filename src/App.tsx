@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts/MainLayout";
 import ArticleDetail from "./pages/articleDetail";
 import { Principal } from "./pages/principal";
@@ -12,13 +13,24 @@ function App() {
   );
 
   return (
-    <MainLayout>
-          <ArticleDetail
-      article={selectedArticle}
-      onSelectArticle={setSelectedArticle}
-    />
-    </MainLayout>
+    <BrowserRouter>
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<Principal />} />
 
+          <Route
+            path="/articulos/:id"
+            element={
+              <ArticleDetail
+                article={selectedArticle}
+                onSelectArticle={setSelectedArticle}
+              />
+            }
+          />
+        </Routes>
+      </MainLayout>
+
+    </BrowserRouter>
   );
 }
 

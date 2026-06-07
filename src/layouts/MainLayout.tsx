@@ -1,4 +1,3 @@
-// src/layouts/MainLayout.tsx
 import { type ReactNode } from 'react';
 
 interface MainLayoutProps {
@@ -9,20 +8,33 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       
-      {/* ─── HEADER ─── */}
-      <header className="bg-white shadow-xs py-4 px-6 flex justify-between items-center border-b border-gray-100">
-        <div className="text-2xl font-bold text-cysam-blue tracking-wider">CYSAM</div>
-        <div className="text-sm text-gray-500">Panel de Control</div>
+
+      <header className="relative w-full h-20 bg-transparent flex justify-between items-center px-6 md:px-12 z-50 border-b border-white/10">
+        
+        <div className="flex items-center">
+          <a href="/" className="block transition-transform duration-200 hover:scale-102">
+            <img 
+              src="CysamLogo.png" 
+              alt="CYSAM Logo" 
+              className="h-10 w-auto object-contain" 
+            />
+          </a>
+        </div>
+
+
+        <div className="text-sm font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-xs">
+          Panel de Control
+        </div>
+        
       </header>
 
-      {/* ─── CONTENIDO DINÁMICO CON REACTNODE ─── */}
+
       <main className="flex-1">
         {children}
       </main>
 
-      {/* ─── FOOTER ─── */}
-      <footer className="bg-cysam-blue text-white py-8 px-6 text-center text-sm font-light mt-auto">
-        <p>© 2026 CYSAM - Proyecto de Desarrollo de Aplicaciones Interactivas.</p>
+      <footer className="bg-cysam-blue text-white py-8 px-6 text-center text-sm font-light mt-auto z-10">
+        <p>© 2026 CYSAM - Proyecto de Desarrollo de Aplicaciones Web</p>
       </footer>
 
     </div>
