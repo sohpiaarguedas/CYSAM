@@ -4,6 +4,8 @@ import { MainLayout } from "./layouts/MainLayout";
 import ArticleDetail from "./pages/articleDetail";
 import { Principal } from "./pages/principal";
 import { articleService } from "./services/articleService";
+import Login from "./pages/LogIn";
+import Register from "./pages/Register";
 
 function App() {
   const articles = articleService.getAllArticles();
@@ -17,6 +19,10 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<Principal />} />
+
+          <Route path="/login" element={<Login/>}/>
+
+          <Route path="/register" element={<Register/>}/>
 
           <Route
             path="/articulos/:id"
