@@ -26,12 +26,7 @@ function App() {
 
           <Route
             path="/articulos/:id"
-            element={
-              <ArticleDetail
-                article={selectedArticle}
-                onSelectArticle={setSelectedArticle}
-              />
-            }
+            element={<ArticleDetail />}
           />
         </Routes>
       </MainLayout>
@@ -39,5 +34,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;
