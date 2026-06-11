@@ -43,7 +43,8 @@ export const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
 
   return (
     <div
-      className="flex flex-col w-full max-w-90 bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+      /* ◄ Modificado: w-full y max-w-full obligan a la tarjeta a abarcar el 100% de la columna del Grid de la página */
+      className="flex flex-col w-full max-w-full bg-white rounded-[28px] overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -61,7 +62,6 @@ export const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
         )}
 
         <img
-
           src={esAudiovisual && linkImagePreview ? linkImagePreview : mediaUrl}
           alt={title}
           className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${esAudiovisual && isHovered ? 'opacity-0 invisible z-0' : 'opacity-100 z-5'}`}
