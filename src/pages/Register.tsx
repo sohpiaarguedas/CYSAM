@@ -2,7 +2,7 @@ import AuthForm from "../components/AuthForm";
 
 const RegisterFields = [
     {
-        name: "Username",
+        name: "name",
         label: "Nombre de Usuario",
         type: "text",
     },

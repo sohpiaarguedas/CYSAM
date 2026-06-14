@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useAuth } from "../Hooks/useAuth";
 
 type AuthField={
     name:string;
@@ -15,6 +17,11 @@ type AuthFormProps = {
 };
 
 const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormProps)=>{
+
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const { login, loading, error } = useAuth();
+
     return(
         <div className="min-h-screen bg-[#f3f3f3] flex items-center justify-center px-6">
             <div className="w-full max-w-[720px] min-h-[520px] bg-[#02387E] flex flex-col items-center px-8 py-12">
@@ -40,12 +47,45 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
                                 id={field.name}
                                 name = {field.name}
                                 type={field.type}
+                                onChange={(event)=>{
+                                        if(field.name === "email"){
+                                            setEmail(event.target.value);
+                                        }
+
+                                        if(field.name === "password"){
+                                            setPassword(event.target.value);
+                                        }
+                                    }
+                                }//onChange: Cada vez que el usuario escriba, esto va a guardar el contenido que este escriba en las respectivas variables de email y password
                                 className="h-10 rounded-lg bg-[#dedede] px-3 text-sm outline-none"
                             />
                         </div>
                     ))}
 
-                    <button type='button' className='mt-2 h-8 rounded-lg bg-[#D7AD4F] text-xs font-semibold text-white hover:bg-[#051F41]'>{buttonText}</button>
+                    <button
+                        type="button"
+                        onClick={async () => {
+                            console.log("Botón presionado");
+
+                            if (title === "Login") {
+                                const result = await login({
+                                email,
+                                password,
+                            });
+
+                            console.log(result);
+                            }
+                        }}
+                        className="mt-2 h-8 rounded-lg bg-[#D7AD4F] text-xs font-semibold text-white hover:bg-[#051F41]"
+                    >
+                    {loading ? "Cargando..." : buttonText}
+                    </button>
+
+                    {error && (
+                        <p className="text-center text-xs text-red-300">
+                            {error}
+                        </p>
+)}
 
                     {linkto && (
                         <a href={linkto} className="text-center text-xs text-white hover:text-[#D7AD4F]">{linkText}</a>
