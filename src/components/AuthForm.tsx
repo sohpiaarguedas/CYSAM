@@ -10,9 +10,11 @@ type AuthFormProps = {
     subtitle: string;
     fields: AuthField[];
     buttonText: string;
+    linkText?:string;
+    linkto?:string;
 };
 
-const AuthForm = ({title,subtitle,fields,buttonText}:AuthFormProps)=>{
+const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormProps)=>{
     return(
         <div className="min-h-screen bg-[#f3f3f3] flex items-center justify-center px-6">
             <div className="w-full max-w-[720px] min-h-[520px] bg-[#02387E] flex flex-col items-center px-8 py-12">
@@ -44,6 +46,11 @@ const AuthForm = ({title,subtitle,fields,buttonText}:AuthFormProps)=>{
                     ))}
 
                     <button type='button' className='mt-2 h-8 rounded-lg bg-[#D7AD4F] text-xs font-semibold text-white hover:bg-[#051F41]'>{buttonText}</button>
+
+                    {linkto && (
+                        <a href={linkto} className="text-center text-xs text-white hover:text-[#D7AD4F]">{linkText}</a>
+                    )}
+
                 </div>
             </div>
         </div>
