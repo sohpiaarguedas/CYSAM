@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
 import type { ArticleType } from '../types/articleType';
+import { useNavigate } from "react-router-dom";
 
 interface ArticleCardProps {
   article: ArticleType;
-  onClick?: () => void;
 }
 
-export const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
+export const ArticleCard = ({ article }: ArticleCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -40,6 +40,9 @@ export const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
       return 'bg-transparent opacity-0';
     }
   };
+
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -75,12 +78,13 @@ export const ArticleCard = ({ article, onClick }: ArticleCardProps) => {
         </div>
       </div>
 
-      <a 
-        href={linkUrl} 
+      <button
+      //navigate cambia el url
+        onClick={() => navigate(`/articulos/${article.id}`)}
         className="block w-full bg-cysam-blue hover:bg-cysam-blue-dark text-white text-center py-3.5 text-base font-semibold tracking-wider transition-colors duration-200"
       >
         {buttonText}
-      </a>
+      </button>
 
     </div>
   );

@@ -26,18 +26,14 @@ function App() {
 
           {/* <Route
             path="/articulos/:id"
-            element={
-              <ArticleDetail
-                article={selectedArticle}
-                onSelectArticle={setSelectedArticle}
-              />
-            }
-          /> */}
+            element={<ArticleDetail />}
+          />
         </Routes>
       </MainLayout>
 
     </BrowserRouter>
   );
 }
+
 
 export default App;
