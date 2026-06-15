@@ -10,9 +10,9 @@ import Register from "./pages/Register";
 function App() {
   const articles = articleService.getAllArticles();
 
-  const [selectedArticle, setSelectedArticle] = useState(
-    articles[0]
-  );
+  // const [selectedArticle, setSelectedArticle] = useState(
+  //   articles[0]
+  // );
 
   return (
     <BrowserRouter>
@@ -24,7 +24,7 @@ function App() {
 
           <Route path="/register" element={<Register/>}/>
 
-          <Route
+          {/* <Route
             path="/articulos/:id"
             element={
               <ArticleDetail
@@ -32,7 +32,7 @@ function App() {
                 onSelectArticle={setSelectedArticle}
               />
             }
-          />
+          /> */}
         </Routes>
       </MainLayout>
 
