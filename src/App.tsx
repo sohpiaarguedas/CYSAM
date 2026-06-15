@@ -24,7 +24,7 @@ function App() {
 
           <Route path="/register" element={<Register/>}/>
 
-          {/* <Route
+          <Route
             path="/articulos/:id"
             element={<ArticleDetail />}
           />
