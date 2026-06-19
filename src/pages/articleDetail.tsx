@@ -1,7 +1,6 @@
 import ArticleMedia from "../components/ArticleMedia";
 import { ArticleCard } from "../components/articleCard";
 import { articleService } from "../services/articleService";
-import type { ArticleType } from "../types/articleType";
 
 //para poder cambiar de articulo y su url
 import { useNavigate, useParams } from "react-router-dom";
