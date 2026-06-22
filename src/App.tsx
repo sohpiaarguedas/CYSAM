@@ -11,8 +11,6 @@ function App() {
   
   const articles = articleService.getAllArticles();
 
- 
-
   return (
     <BrowserRouter>
       <MainLayout>

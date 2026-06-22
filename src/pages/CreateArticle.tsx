@@ -1,4 +1,58 @@
+import { useState } from "react";
+import { articleService } from "../services/articleService";
+
 export function NewArticle() {
+    const [title, setTitle] = useState('');
+    const [summary, setSummary] = useState('');
+    const [mediaType, setMediaType] = useState('Image');
+    const [mediaUrl, setMediaUrl] = useState('');
+    const [buttonText, setButtonText] = useState('');
+    const [linkPreview, setLinkPreview] = useState('');
+    const [linkImagePreview, setLinkImagePreview] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async () => {
+
+        //comprobar que no se suba vacio
+        if (!title || !summary || !mediaType || !mediaUrl || !buttonText || !linkPreview || !linkImagePreview) {
+            //alert para ver mensaje en pantalla
+            alert('Por favor completar todos los campos');
+            return;
+        }
+
+
+
+
+        setLoading(true);
+
+        try {
+            await articleService.createArticle({
+                title,
+                summary,
+                media_type: mediaType,
+                media_url: mediaUrl,
+                button_text: buttonText,
+                link_preview: linkPreview,
+                link_Image_Preview: linkImagePreview
+            });
+
+            //Para avisar que si se logro se usa un alert para ver en pantalla 
+            alert('Artículo publicado correctamente');
+
+            setTitle('');
+            setSummary('');
+            setMediaType('');
+            setMediaUrl('');
+            setButtonText('');
+            setLinkPreview('');
+            setLinkImagePreview('');
+        } catch (error) {
+            alert('Ocurrió un error al publicar el artículo');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
 
         <div className="w-full px-8 py-6">
@@ -15,7 +69,6 @@ export function NewArticle() {
             <div className="max-w-4xl bg-white rounded-[28px] border border-gray-100 ">
                 <div className="p-8">
 
-
                     <h2 className="text-3xl font-bold text-cysam-blue mb-6">
                         Artículo
                     </h2>
@@ -28,7 +81,8 @@ export function NewArticle() {
 
                             <input
                                 type="text"
-
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 className="w-full h-12 px-4 border border-gray-300 rounded-xl outline-none focus:border-cysam-blue"
                             />
                         </div>
@@ -40,11 +94,12 @@ export function NewArticle() {
 
                             <textarea
                                 rows={4}
+                                value={summary}
+                                onChange={(e) => setSummary(e.target.value)}
                                 className="w-full p-4 border border-gray-300 rounded-xl resize-none focus:border-cysam-blue"
                             />
                         </div>
                     </div>
-
 
 
                     <div className="py-6">
@@ -58,10 +113,14 @@ export function NewArticle() {
                                     Tipo de Media
                                 </label>
 
-                                <select className="w-full h-12 px-4 border border-gray-300 rounded-xl">
-                                    <option>Imagen</option>
-                                    <option>Video</option>
-                                    <option>YouTube</option>
+                                <select
+                                    value={mediaType}
+                                    onChange={(e) => setMediaType(e.target.value)}
+                                    className="w-full h-12 px-4 border border-gray-300 rounded-xl"
+                                >
+                                    <option value="image">Imagen</option>
+                                    <option value="video">Video</option>
+                                    <option value="youtube">YouTube</option>
                                 </select>
                             </div>
 
@@ -72,6 +131,8 @@ export function NewArticle() {
 
                                 <input
                                     type="text"
+                                    value={mediaUrl}
+                                    onChange={(e) => setMediaUrl(e.target.value)}
                                     className="w-full h-12 px-4 border border-gray-300 rounded-xl"
                                 />
                             </div>
@@ -93,20 +154,12 @@ export function NewArticle() {
 
                                 <input
                                     type="text"
+                                    value={buttonText}
+                                    onChange={(e) => setButtonText(e.target.value)}
                                     className="w-full h-12 px-4 border border-gray-300 rounded-xl"
                                 />
                             </div>
 
-                            <div>
-                                <label className="block mb-2 text-sm font-semibold text-gray-700">
-                                    URL de Destino
-                                </label>
-
-                                <input
-                                    type="text"
-                                    className="w-full h-12 px-4 border border-gray-300 rounded-xl"
-                                />
-                            </div>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-5">
@@ -117,6 +170,8 @@ export function NewArticle() {
 
                                 <input
                                     type="text"
+                                    value={linkPreview}
+                                    onChange={(e) => setLinkPreview(e.target.value)}
                                     className="w-full h-12 px-4 border border-gray-300 rounded-xl"
                                 />
                             </div>
@@ -128,6 +183,8 @@ export function NewArticle() {
 
                                 <input
                                     type="text"
+                                    value={linkImagePreview}
+                                    onChange={(e) => setLinkImagePreview(e.target.value)}
                                     className="w-full h-12 px-4 border border-gray-300 rounded-xl"
                                 />
                             </div>
@@ -141,8 +198,12 @@ export function NewArticle() {
                             Cancelar
                         </button>
 
-                        <button className="px-8 py-3 rounded-xl bg-cysam-blue hover:bg-cysam-blue-dark text-white font-semibold ">
-                            Publicar Artículo
+                        <button
+                            onClick={handleSubmit}
+                            disabled={loading}
+                            className="px-8 py-3 rounded-xl bg-cysam-blue hover:bg-cysam-blue-dark text-white font-semibold disabled:opacity-50"
+                        >
+                            {loading ? 'Publicando...' : 'Publicar Artículo'}
                         </button>
                     </div>
                 </div>
