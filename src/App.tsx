@@ -10,9 +10,9 @@ import Register from "./pages/Register";
 function App() {
   const articles = articleService.getAllArticles();
 
-  const [selectedArticle, setSelectedArticle] = useState(
-    articles[0]
-  );
+  // const [selectedArticle, setSelectedArticle] = useState(
+  //   articles[0]
+  // );
 
   return (
     <BrowserRouter>
