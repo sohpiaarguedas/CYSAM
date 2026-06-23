@@ -1,31 +1,42 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
 import ArticleMedia from "../components/ArticleMedia";
 import { ArticleCard } from "../components/articleCard";
 import { articleService } from "../services/articleService";
-import type { ArticleType } from "../types/articleType";
-
-//para poder cambiar de articulo y su url
-import { useNavigate, useParams } from "react-router-dom";
-
+import { type ArticleType } from "../types/articleType";
 
 function ArticleDetail() {
-  // useParams es un hook devuelve un objeto con los parámetros de la URL. 
-  // Luego usa el parámetro id junto con find() para buscar y obtener 
-  // el artículo que se debe mostrar
-const params = useParams();
-const id = params.id;
-const navigate = useNavigate();
+  // useParams devuelve los parámetros de la URL
+  const params = useParams();
+  const id = params.id;
 
+  const navigate = useNavigate();
 
-const articles = articleService.getAllArticles();
+  const [articles, setArticles] = useState<ArticleType[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const loadArticles = async () => {
+      const data = await articleService.getAllArticles();
+      setArticles(data);
+      setLoading(false);
+    };
 
-const article = articles.find(
-  article => article.id === Number(id)
-);
+    loadArticles();
+  }, []);
 
-if (!article) {
-  return <h1>Artículo no encontrado</h1>;
-}
+  if (loading) {
+    return <h1>Cargando...</h1>;
+  }
+
+  const article = articles.find(
+    article => article.id === id
+  );
+
+  if (!article) {
+    return <h1>Artículo no encontrado</h1>;
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
@@ -50,15 +61,13 @@ if (!article) {
         <p className="max-w-4xl mx-auto mb-4">
           {article.summary}
         </p>
-
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((info) => (
-           <div
+          <div
             key={info.id}
             className="cursor-pointer"
-            //navigate cambia el url
             onClick={() => navigate(`/articulos/${info.id}`)}
           >
             <ArticleCard article={info} />

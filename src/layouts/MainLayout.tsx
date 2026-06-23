@@ -1,10 +1,18 @@
 import { type ReactNode } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 interface MainLayoutProps {
   children: ReactNode; // Define que este componente puede envolver a otros componentes o páginas
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
+
+  //cambia la ruta
+ const navigate = useNavigate();
+
+
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       
@@ -24,6 +32,14 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
 
         <div className="text-sm font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-xs">
           Panel de Control
+        </div>
+
+
+
+         <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
+          <button onClick={() => navigate("/crear")}>
+            Crear artículo
+          </button>
         </div>
         
       </header>
