@@ -1,5 +1,11 @@
 import {useState} from "react";
 
+interface RegisterData{
+    name:string;
+    email:string;
+    password:string;
+}
+
 interface LoginData{
     email:string;
     password:string;
@@ -15,15 +21,58 @@ interface LoginResponse{
     };
 }
 
+interface AuthResponse{
+    ok: boolean;
+    message:string;
+    data?:{
+        id:string;
+        name:string;
+        email:string;
+    };
+}
+
 export function useAuth(){
     const[loading, setLoading] = useState(false);
     const[error, setError] = useState<string | null>(null);
+
+    const register = async (registerData: RegisterData)=>{
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await fetch("http://localhost:3000/api/auth/register",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify(registerData),
+            });
+
+            const data: AuthResponse = await response.json();
+
+            if(!response.ok){
+                setError(data.message);
+                return data;
+            }
+
+            return data;
+
+        } catch (error) {
+
+            setError("Ocurrió un error inesperado");
+            return null;
+
+        }finally{
+            
+            setLoading(false);
+
+        }
+    };
 
     const login = async (loginData: LoginData) =>{
         try {
             setLoading(true);
             setError(null);
-            const response = await fetch("http://localhost:3000/api/authRoutes/login",
+            const response = await fetch("http://localhost:3000/api/auth/login",
                 {
                     method: "POST",
                     headers:{
@@ -50,6 +99,7 @@ export function useAuth(){
     };
 
     return{
+        register,
         login,
         loading,
         error,

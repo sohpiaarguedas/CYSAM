@@ -18,9 +18,10 @@ type AuthFormProps = {
 
 const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormProps)=>{
 
+    const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-    const { login, loading, error } = useAuth();
+    const { register, login, loading, error } = useAuth();
 
     return(
         <div className="min-h-screen bg-[#f3f3f3] flex items-center justify-center px-6">
@@ -48,6 +49,11 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
                                 name = {field.name}
                                 type={field.type}
                                 onChange={(event)=>{
+
+                                        if(field.name === "name"){
+                                            setName(event.target.value);
+                                        }
+
                                         if(field.name === "email"){
                                             setEmail(event.target.value);
                                         }
@@ -74,6 +80,16 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
                             });
 
                             console.log(result);
+                            }
+
+                            if(title === "Sign Up"){
+                                const result = await register({
+                                    name,
+                                    email,
+                                    password,
+                                })
+
+                                console.log(result);
                             }
                         }}
                         className="mt-2 h-8 rounded-lg bg-[#D7AD4F] text-xs font-semibold text-white hover:bg-[#051F41]"

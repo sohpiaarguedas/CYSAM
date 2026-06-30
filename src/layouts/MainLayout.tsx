@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface MainLayoutProps {
   children: ReactNode; // Define que este componente puede envolver a otros componentes o páginas
@@ -34,12 +34,21 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
           Panel de Control
         </div>
 
+        <div className='flex items-center gap-3'>
+
+          <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
+            <button onClick={() => navigate("/login")}>
+              Iniciar sesión
+            </button>
+          </div>
 
 
-         <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
-          <button onClick={() => navigate("/crear")}>
-            Crear artículo
-          </button>
+          <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
+            <button onClick={() => navigate("/crear")}>
+              Crear artículo
+            </button>
+          </div>
+
         </div>
         
       </header>
