@@ -77,10 +77,14 @@ export const articleService = {
         button_text: string;
     }) {
         try {
+
+            const token = localStorage.getItem("token");
+
             const response = await fetch(`${API_URL}/create`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(article)
             });

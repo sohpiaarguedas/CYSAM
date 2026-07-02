@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 type AuthField={
     name:string;
@@ -22,6 +23,7 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const { register, login, loading, error } = useAuth();
+    const navigate = useNavigate();
 
     return(
         <div className="min-h-screen bg-[#f3f3f3] flex items-center justify-center px-6">
@@ -79,7 +81,12 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
                                 password,
                             });
 
-                            console.log(result);
+                                console.log(result);
+
+                                if(result?.ok && result.token){
+                                    localStorage.setItem("token", result.token);
+                                    navigate("/");
+                                }
                             }
 
                             if(title === "Sign Up"){
@@ -90,6 +97,11 @@ const AuthForm = ({title,subtitle,fields,buttonText,linkText,linkto}:AuthFormPro
                                 })
 
                                 console.log(result);
+
+                                if(result?.ok && result.token){
+                                    localStorage.setItem("token",result.token);
+                                    navigate("/login");
+                                }
                             }
                         }}
                         className="mt-2 h-8 rounded-lg bg-[#D7AD4F] text-xs font-semibold text-white hover:bg-[#051F41]"

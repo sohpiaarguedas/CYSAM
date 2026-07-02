@@ -19,6 +19,7 @@ interface LoginResponse{
         name:string;
         email:string;
     };
+    token?:string;
 }
 
 interface AuthResponse{
@@ -29,6 +30,7 @@ interface AuthResponse{
         name:string;
         email:string;
     };
+    token?:string;
 }
 
 export function useAuth(){

@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface MainLayoutProps {
   children: ReactNode; // Define que este componente puede envolver a otros componentes o páginas
@@ -9,7 +9,8 @@ interface MainLayoutProps {
 export const MainLayout = ({ children }: MainLayoutProps) => {
 
   //cambia la ruta
- const navigate = useNavigate();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
 
 
@@ -35,19 +36,21 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         </div>
 
         <div className='flex items-center gap-3'>
+          {!token && (
+            <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
+              <button onClick={() => navigate("/login")}>
+                Iniciar sesión
+              </button>
+            </div>
+          )}
 
-          <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
-            <button onClick={() => navigate("/login")}>
-              Iniciar sesión
-            </button>
-          </div>
-
-
-          <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
-            <button onClick={() => navigate("/crear")}>
-              Crear artículo
-            </button>
-          </div>
+          {token && (
+            <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
+              <button onClick={() => navigate("/crear")}>
+                Crear artículo
+              </button>
+            </div>
+          )}
 
         </div>
         
