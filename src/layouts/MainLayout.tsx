@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface MainLayoutProps {
   children: ReactNode; // Define que este componente puede envolver a otros componentes o páginas
@@ -10,6 +10,12 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
 
   //cambia la ruta
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
+
+  const logoSrc = isHome ? "/CysamLogo.png": "/CysamLogoAlterno.png";
+
   const token = localStorage.getItem("token");
 
 
@@ -23,18 +29,13 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
         <div className="flex items-center">
           <a href="/" className="block transition-transform duration-200 hover:scale-102">
             <img
-              src="CysamLogo.png"
+              src={logoSrc}
               alt="CYSAM Logo"
               className="h-10 w-auto object-contain"
             />
           </a>
         </div>
 
-<<<<<<< HEAD
-=======
-
-       
->>>>>>> 1f041aade172f36b3bb7471c3ad1e12856a734ac
         <div className='flex items-center gap-3'>
           {!token && (
             <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">

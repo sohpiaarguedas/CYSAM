@@ -10,7 +10,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const { title, summary, mediaUrl, mediaType, linkPreview, linkImagePreview } = article;
+  const { title, summary, mediaUrl, mediaType,linkImagePreview } = article;
 
   const esAudiovisual = mediaType === 'video' || mediaType === 'youtube';
 
@@ -56,8 +56,6 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
         {esAudiovisual && (
           <video
             ref={videoRef}
-            src={linkPreview}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             muted
             loop
             playsInline
