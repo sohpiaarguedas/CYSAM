@@ -146,22 +146,6 @@ export function NewArticle() {
                             Enlace Externo e Interacción
                         </h2>
 
-                        <div className="grid md:grid-cols-2 gap-5 mb-5">
-                            <div>
-                                <label className="block mb-2 text-sm font-semibold text-gray-700">
-                                    Texto del Botón
-                                </label>
-
-                                <input
-                                    type="text"
-                                    value={buttonText}
-                                    onChange={(e) => setButtonText(e.target.value)}
-                                    className="w-full h-12 px-4 border border-gray-300 rounded-xl"
-                                />
-                            </div>
-
-                        </div>
-
                         <div className="grid md:grid-cols-2 gap-5">
                             <div>
                                 <label className="block mb-2 text-sm font-semibold text-gray-700">
