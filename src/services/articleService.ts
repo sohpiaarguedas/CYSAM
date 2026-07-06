@@ -17,7 +17,7 @@ export const articleService = {
             //  Transforma las propiedades en snake_case nativas de PostgreSQL a variables en camelCase compatibles con 
             // nuestros componentes de React, asegurando la compatibilidad de tipados mediante TypeScript y asignando
             //  valores de respaldo en caso de datos nulos.
-            
+
             return data.map((art) => ({
                 id: art.id,
                 title: art.title,
@@ -63,10 +63,31 @@ export const articleService = {
             return undefined;
         }
     },
+    async deleteArticle(id: string | number): Promise<boolean> {
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`${API_URL}/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.message || 'Failed to delete article');
+            }
+
+            return true;
+        } catch (error) {
+            console.error("Error al eliminar el artículo:", error);
+            throw error;
+        }
+    },
 
 
 
-    
+
     async createArticle(article: {
         title: string;
         summary: string;

@@ -24,7 +24,7 @@ export const Principal = () => {
     useEffect(() => {
         articleService.getAllArticles()
             .then((data) => {
-                setArticles(data); 
+                setArticles(data);
             });
     }, []);
 
@@ -106,11 +106,10 @@ export const Principal = () => {
                                 className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
                                 <div
-                                    className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm transition-all duration-200 ${
-                                        msg.sender === 'user'
+                                    className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm transition-all duration-200 ${msg.sender === 'user'
                                             ? 'bg-cysam-blue text-white rounded-tr-none'
                                             : 'bg-white text-gray-800 rounded-tl-none border border-gray-200'
-                                    }`}
+                                        }`}
                                 >
                                     <p className="whitespace-pre-line font-light">{msg.text}</p>
                                 </div>
@@ -177,7 +176,7 @@ export const Principal = () => {
                                 article={article}
                             />
                         ))}
-                        
+
                     </div>
 
                 </div>

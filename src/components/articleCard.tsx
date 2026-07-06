@@ -79,7 +79,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
       </div>
 
       <button
-      //navigate cambia el url
+        //navigate cambia el url
         onClick={() => navigate(`/articulos/${article.id}`)}
         className="block w-full bg-cysam-blue hover:bg-cysam-blue-dark text-white text-center py-3.5 text-base font-semibold tracking-wider transition-colors duration-200"
       >
