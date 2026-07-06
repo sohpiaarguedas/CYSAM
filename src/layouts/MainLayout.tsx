@@ -30,6 +30,11 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
           </a>
         </div>
 
+<<<<<<< HEAD
+=======
+
+       
+>>>>>>> 1f041aade172f36b3bb7471c3ad1e12856a734ac
         <div className='flex items-center gap-3'>
           {!token && (
             <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
@@ -59,7 +64,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <footer className="bg-cysam-blue text-white py-8 px-6 text-center text-sm font-light mt-auto z-10">
         <p>© 2026 CYSAM - Proyecto de Desarrollo de Aplicaciones Web</p>
 
-        <div className='flex gap-280'>
+        <div className=" flex  justify-between items-center">
+
 
         <div className="flex flex-col items-start">
           <p>Desarrolladores:</p>
