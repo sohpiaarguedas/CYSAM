@@ -15,7 +15,7 @@ function ArticleDetail() {
 
   const [articles, setArticles] = useState<ArticleType[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const loadArticles = async () => {
       const data = await articleService.getAllArticles();
@@ -25,23 +25,21 @@ function ArticleDetail() {
 
     loadArticles();
   }, []);
-    const handleDelete = async (id: string | number) => {
-      try {
-        await articleService.deleteArticle(id);
-        setArticles(articles.filter(article => article.id !== id));
-      } catch (error) {
-        console.error("Error al eliminar el artículo:", error);
-      }
-    };
-
+  const handleDelete = async (id: string | number) => {
+    try {
+      await articleService.deleteArticle(id);
+      setArticles(articles.filter((article) => article.id !== id));
+      navigate("/"); // Redirige a la página principal después de eliminar
+    } catch (error) {
+      console.error("Error al eliminar el artículo:", error);
+    }
+  };
 
   if (loading) {
     return <h1>Cargando...</h1>;
   }
 
-  const article = articles.find(
-    article => article.id === id
-  );
+  const article = articles.find((article) => article.id === id);
 
   if (!article) {
     return <h1>Artículo no encontrado</h1>;
@@ -50,9 +48,7 @@ function ArticleDetail() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-medium">
-          {article.title}
-        </h1>
+        <h1 className="text-2xl font-medium">{article.title}</h1>
       </div>
 
       <div className="mb-10">
@@ -63,13 +59,9 @@ function ArticleDetail() {
       </div>
 
       <div className="bg-yellow-100 p-8 text-center mb-12">
-        <h2 className="text-xl font-medium mb-4">
-          {article.title}
-        </h2>
+        <h2 className="text-xl font-medium mb-4">{article.title}</h2>
 
-        <p className="max-w-4xl mx-auto mb-4">
-          {article.summary}
-        </p>
+        <p className="max-w-4xl mx-auto mb-4">{article.summary}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,9 +75,20 @@ function ArticleDetail() {
           </div>
         ))}
       </div>
-      <div className="flex justify-end gap-8 mb-8 padding-20">
-        <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={() => handleDelete
-          (article.id)} >Delete</button>
+      <div className="flex justify-end items-center gap-8 mt-16 mb-8">
+        <button
+          className="bg-cysam-blue text-white px-4 py-2 rounded-full cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          Volver al Inicio
+        </button>
+
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded-md"
+          onClick={() => handleDelete(article.id)}
+        >
+          Eliminar este Artículo
+        </button>
       </div>
     </div>
   );
