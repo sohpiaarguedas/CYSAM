@@ -30,6 +30,11 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
           </a>
         </div>
 
+<<<<<<< HEAD
+=======
+
+       
+>>>>>>> 1f041aade172f36b3bb7471c3ad1e12856a734ac
         <div className='flex items-center gap-3'>
           {!token && (
             <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
