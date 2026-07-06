@@ -15,7 +15,7 @@ function ArticleDetail() {
 
   const [articles, setArticles] = useState<ArticleType[]>([]);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const loadArticles = async () => {
       const data = await articleService.getAllArticles();
@@ -25,6 +25,15 @@ function ArticleDetail() {
 
     loadArticles();
   }, []);
+    const handleDelete = async (id: string | number) => {
+      try {
+        await articleService.deleteArticle(id);
+        setArticles(articles.filter(article => article.id !== id));
+      } catch (error) {
+        console.error("Error al eliminar el artículo:", error);
+      }
+    };
+
 
   if (loading) {
     return <h1>Cargando...</h1>;
@@ -73,6 +82,10 @@ function ArticleDetail() {
             <ArticleCard article={info} />
           </div>
         ))}
+      </div>
+      <div className="flex justify-end gap-8 mb-8 padding-20">
+        <button className="bg-red-500 text-white px-4 py-2 rounded-md" onClick={() => handleDelete
+          (article.id)} >Delete</button>
       </div>
     </div>
   );
