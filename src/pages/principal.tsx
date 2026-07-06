@@ -88,13 +88,9 @@ export const Principal = () => {
                     ¿Necesitas ayuda?
                 </h3>
 
-                <div className="w-full max-w-4xl bg-[#E5DCD0] rounded-[28px] p-6 md:p-8 mt-10 flex flex-col gap-6 shadow-md transition-all duration-300">
+                <div className="w-full max-w-9xl bg-[#E5DCD0] rounded-[28px] p-6 md:p-8 mt-10 flex flex-col gap-6 shadow-md transition-all duration-300">
                     <div className="text-left border-b border-gray-300/50 pb-4">
                         <h4 className="text-lg font-bold text-cysam-blue-dark flex items-center gap-2">
-                            <span className="relative flex h-3 w-3">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                            </span>
                             Asistente Inteligente de CYSAM
                         </h4>
                         <p className="text-xs text-gray-600 mt-1 font-light">
@@ -181,12 +177,7 @@ export const Principal = () => {
                                 article={article}
                             />
                         ))}
-                        {/* {articles.map((article) => (
-                            <ArticleCard
-                                key={article.id}
-                                article={article}
-                            />
-                        ))} */}
+                        
                     </div>
 
                 </div>
