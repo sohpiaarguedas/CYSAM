@@ -78,8 +78,8 @@ export const Principal = () => {
                 </h2>
 
                 <YouTubeEmbed
-                    embedUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    title="Tutorial de navegación CYSAM"
+                    embedUrl="https://www.youtube.com/embed/1lNmoAHroxU?si=1Zgg16BYtfvLq0ZB"
+                    title="Bienvenida a CYSAM"
                 />
             </section>
 
