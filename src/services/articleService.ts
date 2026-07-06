@@ -13,7 +13,11 @@ export const articleService = {
 
             //Se le pide a la IA ayuda para no cambiar toda la estructura de la db ya existente por lo que recomienda
             //lo siguiente:
-            //Esta sección actúa como una capa de transformación que normaliza los datos asíncronos que vienen de Neon. Transforma las propiedades en snake_case nativas de PostgreSQL a variables en camelCase compatibles con nuestros componentes de React, asegurando la compatibilidad de tipados mediante TypeScript y asignando valores de respaldo en caso de datos nulos.
+            //Esta sección actúa como una capa de transformación que normaliza los datos asíncronos que vienen de Neon.
+            //  Transforma las propiedades en snake_case nativas de PostgreSQL a variables en camelCase compatibles con 
+            // nuestros componentes de React, asegurando la compatibilidad de tipados mediante TypeScript y asignando
+            //  valores de respaldo en caso de datos nulos.
+            
             return data.map((art) => ({
                 id: art.id,
                 title: art.title,
@@ -57,6 +61,41 @@ export const articleService = {
         } catch (error) {
             console.error(`Faiiled to fetch article with id${id}:`, error);
             return undefined;
+        }
+    },
+
+
+
+    
+    async createArticle(article: {
+        title: string;
+        summary: string;
+        media_url: string;
+        media_type: string;
+        link_preview: string;
+        link_Image_Preview: string;
+        button_text: string;
+    }) {
+        try {
+
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`${API_URL}/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(article)
+            });
+
+            if (!response.ok) throw new Error('Failed to create article');
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Error al crear el artículo:", error);
+            throw error;
         }
     }
 };

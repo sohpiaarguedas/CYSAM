@@ -2,7 +2,7 @@ import AuthForm from "../components/AuthForm";
 
 const RegisterFields = [
     {
-        name: "Username",
+        name: "name",
         label: "Nombre de Usuario",
         type: "text",
     },
@@ -30,6 +30,8 @@ const Register = () => {
             subtitle="Regístrate en nuestra aplicación ingresando tus datos"
             fields={RegisterFields}
             buttonText="Registrarse"
+            linkto="/login"
+            linkText="¿Ya tienes cuenta? Inicia sesión"
         />
     );
 };

@@ -20,6 +20,8 @@ const Login = () =>{
             subtitle="Inicia sesión en nuestra aplicación ingresando tus datos"
             fields={LoginFields}
             buttonText="Iniciar Sesión"
+            linkto="/register"
+            linkText="¿No tienes una cuenta? ¡Regístrate con nosotros!"
         />
     );
 };
