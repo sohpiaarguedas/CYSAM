@@ -6,7 +6,6 @@ export function NewArticle() {
     const [summary, setSummary] = useState('');
     const [mediaType, setMediaType] = useState('Image');
     const [mediaUrl, setMediaUrl] = useState('');
-    const [buttonText, setButtonText] = useState('');
     const [linkPreview, setLinkPreview] = useState('');
     const [linkImagePreview, setLinkImagePreview] = useState('');
     const [loading, setLoading] = useState(false);
@@ -14,7 +13,7 @@ export function NewArticle() {
     const handleSubmit = async () => {
 
         //comprobar que no se suba vacio
-        if (!title || !summary || !mediaType || !mediaUrl || !buttonText || !linkPreview || !linkImagePreview) {
+        if (!title || !summary || !mediaType || !mediaUrl || !linkPreview || !linkImagePreview) {
             //alert para ver mensaje en pantalla
             alert('Por favor completar todos los campos');
             return;
@@ -31,7 +30,6 @@ export function NewArticle() {
                 summary,
                 media_type: mediaType,
                 media_url: mediaUrl,
-                button_text: buttonText,
                 link_preview: linkPreview,
                 link_Image_Preview: linkImagePreview
             });
@@ -43,7 +41,6 @@ export function NewArticle() {
             setSummary('');
             setMediaType('');
             setMediaUrl('');
-            setButtonText('');
             setLinkPreview('');
             setLinkImagePreview('');
         } catch (error) {

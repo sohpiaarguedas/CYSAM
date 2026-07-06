@@ -74,7 +74,6 @@ export const articleService = {
         media_type: string;
         link_preview: string;
         link_Image_Preview: string;
-        button_text: string;
     }) {
         try {
 

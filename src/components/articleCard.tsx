@@ -10,7 +10,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const { title, summary, mediaUrl, mediaType, linkUrl, linkPreview, linkImagePreview, posterUrl, buttonText = 'VER' } = article;
+  const { title, summary, mediaUrl, mediaType, linkPreview, linkImagePreview } = article;
 
   const esAudiovisual = mediaType === 'video' || mediaType === 'youtube';
 
@@ -83,7 +83,7 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
         onClick={() => navigate(`/articulos/${article.id}`)}
         className="block w-full bg-cysam-blue hover:bg-cysam-blue-dark text-white text-center py-3.5 text-base font-semibold tracking-wider transition-colors duration-200"
       >
-        {buttonText}
+        VER
       </button>
 
     </div>

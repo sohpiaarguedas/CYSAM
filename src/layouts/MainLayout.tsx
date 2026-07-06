@@ -30,11 +30,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
           </a>
         </div>
 
-
-        <div className="text-sm font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)] bg-black/10 px-4 py-1.5 rounded-full backdrop-blur-xs">
-          Panel de Control
-        </div>
-
         <div className='flex items-center gap-3'>
           {!token && (
             <div className="bg-cysam-blue text-white p-2 rounded-full cursor-pointer">
